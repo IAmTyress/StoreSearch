@@ -23,6 +23,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        customizeAppearance()
+        searchBar.becomeFirstResponder()
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         var cellNib = UINib(nibName: TableView.ReuseIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.ReuseIdentifiers.searchResultCell)
@@ -98,6 +100,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return indexPath
     }
     
+    // MARK: - Helper Methods
+    func customizeAppearance() {
+        let barTintColor = UIColor(red: 20/255, green: 160/255,
+                                  blue: 160/255, alpha: 1)
+        searchBar.barTintColor = barTintColor
+        searchBar.searchTextField.backgroundColor = .white
+    }
+    
 }
 
 struct TableView {
@@ -106,3 +116,5 @@ struct TableView {
         static let nothingFoundCell = "NothingFoundCell"
     }
 }
+
+
