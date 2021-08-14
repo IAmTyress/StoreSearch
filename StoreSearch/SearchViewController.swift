@@ -6,7 +6,9 @@
 //  Copyright © 2021 Malysh Tim. All rights reserved.
 //
 
+
 import UIKit
+
 
 class SearchViewController: UIViewController {
     
@@ -36,7 +38,6 @@ class SearchViewController: UIViewController {
 }
 
 
-
 // MARK: - SearchBar
 
 extension SearchViewController: UISearchBarDelegate {
@@ -57,13 +58,13 @@ extension SearchViewController: UISearchBarDelegate {
             
             if let data = performStoreRequest(with: url) {
                 searchResults = parse(data: data)
+                searchResults.sort(by: <)
             }
             
             tableView.reloadData()
         }
     }
 }
-
 
 
 // MARK: - TableView
