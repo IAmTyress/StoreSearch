@@ -17,6 +17,7 @@
 		6EC3C35F26C7EA4B00B451E3 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3C35E26C7EA4B00B451E3 /* LoadingCell.xib */; };
 		6EE5FD6726C519E4004A53FB /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EE5FD6626C519E4004A53FB /* SearchResultCell.xib */; };
 		6EE5FD6926C51E86004A53FB /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE5FD6826C51E86004A53FB /* SearchResultCell.swift */; };
+		6EFDBA9A26CA843200458936 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDBA9926CA843200458936 /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6EC3C35E26C7EA4B00B451E3 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		6EE5FD6626C519E4004A53FB /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		6EE5FD6826C51E86004A53FB /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		6EFDBA9926CA843200458936 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				6E67B40426C3DEA0007A1AC9 /* AppDelegate.swift */,
 				6E67B40626C3DEA0007A1AC9 /* SceneDelegate.swift */,
 				6E67B40826C3DEA0007A1AC9 /* SearchViewController.swift */,
+				6EFDBA9926CA843200458936 /* UIImageView+DownloadImage.swift */,
 				6EBDA52426C425D900320160 /* SearchResult.swift */,
 				6E67B40A26C3DEA0007A1AC9 /* Main.storyboard */,
 				6EC3C35E26C7EA4B00B451E3 /* LoadingCell.xib */,
@@ -154,6 +157,7 @@
 			files = (
 				6E67B40926C3DEA0007A1AC9 /* SearchViewController.swift in Sources */,
 				6E67B40526C3DEA0007A1AC9 /* AppDelegate.swift in Sources */,
+				6EFDBA9A26CA843200458936 /* UIImageView+DownloadImage.swift in Sources */,
 				6EBDA52526C425D900320160 /* SearchResult.swift in Sources */,
 				6E67B40726C3DEA0007A1AC9 /* SceneDelegate.swift in Sources */,
 				6EE5FD6926C51E86004A53FB /* SearchResultCell.swift in Sources */,

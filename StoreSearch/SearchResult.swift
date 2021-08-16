@@ -80,10 +80,12 @@ class SearchResult: Codable, CustomStringConvertible {
         case kind, artistName, currency
         case trackName, trackPrice, trackViewUrl
         case collectionName, collectionPrice, collectionViewUrl
-    }    
+    }
     
 }
 
 func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
     return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
 }
+
+

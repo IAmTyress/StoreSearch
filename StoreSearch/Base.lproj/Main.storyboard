@@ -33,7 +33,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="All"/>
-                                                <segment title="Second"/>
+                                                <segment title="Music"/>
                                                 <segment title="Software"/>
                                                 <segment title="E-books"/>
                                             </segments>
