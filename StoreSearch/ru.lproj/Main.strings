@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "K6X-K7-ifC"; */
+"K6X-K7-ifC.text" = "Имя";
+
+/* Class = "UISearchBar"; placeholder = "App name, artist, song, album, e-book"; ObjectID = "U2s-Hl-ba7"; */
+"U2s-Hl-ba7.placeholder" = "Приложение, артист, песня, альбом, книга";
+
+/* Class = "UIButton"; normalTitle = "$9.99"; ObjectID = "Vhr-hJ-HDV"; */
+"Vhr-hJ-HDV.normalTitle" = "$9.99";
+
+/* Class = "UILabel"; text = "Type:"; ObjectID = "dvn-VE-XiR"; */
+"dvn-VE-XiR.text" = "Тип:";
+
+/* Class = "UILabel"; text = "Genre value"; ObjectID = "dxQ-Gz-AzT"; */
+"dxQ-Gz-AzT.text" = "Значение жанра";
+
+/* Class = "UISegmentedControl"; fBA-dR-VHp.segmentTitles[0] = "All"; ObjectID = "fBA-dR-VHp"; */
+"fBA-dR-VHp.segmentTitles[0]" = "Все";
+
+/* Class = "UISegmentedControl"; fBA-dR-VHp.segmentTitles[1] = "Music"; ObjectID = "fBA-dR-VHp"; */
+"fBA-dR-VHp.segmentTitles[1]" = "Музыка";
+
+/* Class = "UISegmentedControl"; fBA-dR-VHp.segmentTitles[2] = "Software"; ObjectID = "fBA-dR-VHp"; */
+"fBA-dR-VHp.segmentTitles[2]" = "ПО";
+
+/* Class = "UISegmentedControl"; fBA-dR-VHp.segmentTitles[3] = "E-books"; ObjectID = "fBA-dR-VHp"; */
+"fBA-dR-VHp.segmentTitles[3]" = "Книги";
+
+/* Class = "UILabel"; text = "Artist name"; ObjectID = "ldt-V7-DSC"; */
+"ldt-V7-DSC.text" = "Имя автора";
+
+/* Class = "UILabel"; text = "Kind value"; ObjectID = "thd-gm-dSc"; */
+"thd-gm-dSc.text" = "Значение типа";
+
+/* Class = "UILabel"; text = "Genre:"; ObjectID = "yes-sF-P4j"; */
+"yes-sF-P4j.text" = "Жанр:";
