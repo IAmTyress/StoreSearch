@@ -12,13 +12,13 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    // MARK: - Outlets
+    // MARK: -- Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    // MARK: - Data Model
+    // MARK: -- Data Model
     private let search = Search()
     var landscapeVC: LandscapeViewController?
     
@@ -66,14 +66,14 @@ class SearchViewController: UIViewController {
     }
 
     
-    // MARK: - IBActions
+    // MARK: -- IBActions
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         performSearch()
     }
     
     
-    // MARK: - Helper Methods
+    // MARK: -- Helper Methods
     func showNetworkError() {
         let alert = UIAlertController(title: "Whoops...", message: "There was an error accessing the iTunes Store." + " Please try again.", preferredStyle: .alert)
         
@@ -99,11 +99,12 @@ class SearchViewController: UIViewController {
                 self.tableView.reloadData()
             })
             tableView.reloadData()
+            self.landscapeVC?.searchResultsReceived()
             searchBar.resignFirstResponder()
         }
     }
     
-    // MARK: - Landscape
+    // MARK: -- Landscape
     func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         guard landscapeVC == nil else { return }
         
@@ -133,6 +134,9 @@ class SearchViewController: UIViewController {
             controller.willMove(toParent: nil)
             coordinator.animate(alongsideTransition: { _ in
                 controller.view.alpha = 0
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }, completion: { _ in
                 controller.view.removeFromSuperview()
                 controller.removeFromParent()
@@ -141,7 +145,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    //MARK: - Navigation
+    //MARK: -- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail" {
             if case .results(let list) = search.state {

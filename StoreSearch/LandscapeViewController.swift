@@ -17,6 +17,7 @@ class LandscapeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    // MARK: -- Controller Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,13 +46,62 @@ class LandscapeViewController: UIViewController {
             firstTime = false
             
             switch search.state {
-            case .notSearchedYet, .loading, .noResults: break
+            case .notSearchedYet: showNothingFoundLabel()
+            case .noResults: break
+            case .loading: showSpinner()
             case .results(let list): tileButtons(list)
             }
         }
     }
     
-    // MARK: - Tile Buttons
+    // MARK: -- Helper Methods
+    private func showSpinner() {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.center = CGPoint(x: scrollView.bounds.midX + 0.5,
+                                 y: scrollView.bounds.midY + 0.5)
+        spinner.tag = 1000
+        spinner.color = UIColor.white
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    func searchResultsReceived() {
+        hideSpinner()
+        
+        switch search.state {
+        case .notSearchedYet, .loading: break
+        case .noResults: showNothingFoundLabel()
+        case .results(let list): tileButtons(list)
+        }
+    }
+    
+    private func hideSpinner() {
+        view.viewWithTag(1000)?.removeFromSuperview()
+    }
+    
+    private func showNothingFoundLabel() {
+        let label = UILabel(frame: CGRect.zero)
+        label.text = "Nothing Found"
+        label.textColor = .white
+        label.backgroundColor = .clear
+        
+        label.sizeToFit()
+        
+        var rect = label.frame
+        rect.size.width = ceil(rect.size.width/2) * 2
+        rect.size.height = ceil(rect.size.height/2) * 2
+        label.frame = rect
+        
+        label.center = CGPoint(x: scrollView.bounds.midX,
+                               y: scrollView.bounds.midY)
+        view.addSubview(label)
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "ShowDetail", sender: sender)
+    }
+    
+    // MARK: -- Tile Buttons
     private func tileButtons(_ searchResults: [SearchResult]) {
         var columnsPerPage = 6
         var rowsPerPage = 3
@@ -108,7 +158,8 @@ class LandscapeViewController: UIViewController {
             button.frame = CGRect(x: x + paddingHorz,
                                   y: marginY + CGFloat(row)*itemHeight + paddingVert,
                                   width: buttonWidth, height: buttonHeight)
-            
+            button.tag = 2000 + index
+            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             scrollView.addSubview(button)
             row += 1
             if row == rowsPerPage {
@@ -131,7 +182,7 @@ class LandscapeViewController: UIViewController {
         pageControl.currentPage = 0
     }
     
-    // MARK: - Download Image
+    // MARK: -- Download Image
     private func downloadImage(for searchResult: SearchResult, andPlaceOn button: UIButton) {
         if let url = URL(string: searchResult.imageSmall) {
             let task = URLSession.shared.downloadTask(with: url) { [weak button] url, response, error in
@@ -157,6 +208,17 @@ class LandscapeViewController: UIViewController {
             task.cancel()
         }
     }
+        
+    // MARK: -- Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail" {
+            if case .results(let list) = search.state {
+                let detailViewController = segue.destination as! DetailViewController
+                let searchResult = list[(sender as! UIButton).tag - 2000]
+                detailViewController.searchResult = searchResult
+            }
+        }
+    }
 }
 
 // MARK: - ScrollView Delegate
@@ -167,7 +229,7 @@ extension LandscapeViewController: UIScrollViewDelegate {
         pageControl.currentPage = page
     }
     
-    // MARK: - Actions
+    // MARK: -- Actions
     @IBAction func pageChanged(_ sender: UIPageControl) {
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
             self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage),
