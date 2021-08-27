@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  StoreSearch
+
+  Created by Russ Rosaura on 8/26/21.
+  Copyright © 2021 Malysh Tim. All rights reserved.
+*/
+
+CFBundleDisplayName = "Магазин";
